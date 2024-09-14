@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    function getModels() {
+        fetch('http://127.0.0.1:8000/api/v1/models/')
+            .then(res => res.json())
+            .then(response => {
+                console.log(response)
+                return response
+            })
+    }
+
+    function getDetailModel() {
+        fetch('http://127.0.0.1:8000/api/v1/models/2/')
+            .then(res => res.json())
+            .then(response => {
+                console.log(response)
+            })
+    }
+
+    function createModel() {
+        fetch('http://127.0.0.1:8000/api/v1/models/create/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: 'test-name',
+                description: 'test-des'
+            })
+        })
+            .then(res => res.json())
+            .then(response => {
+                console.log(response)
+            })
+    }
+
+    function updateModel() {
+        fetch('http://127.0.0.1:8000/api/v1/models/update/2/', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: 'test-nameeee',
+                description: 'test-dessss'
+            })
+        })
+            .then(res => res.json())
+            .then(response => {
+                console.log(response)
+            })
+    }
+
+    function deleteModel() {
+        fetch('http://127.0.0.1:8000/api/v1/models/delete/3/', {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(response => {
+                console.log(response)
+            })
+    }
+
+</script>
+</body>
+</html>
